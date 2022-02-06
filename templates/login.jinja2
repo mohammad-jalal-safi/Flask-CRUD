@@ -1,0 +1,63 @@
+{% extends "layout.jinja2" %}
+
+{% block content %}
+<section class="vh-100">
+  <div class="container-fluid">
+    <div class="row">
+    <div class="col-md-4 offset-md-4">
+
+
+    <div class="card">
+        <div class="card-body">
+            <div >
+
+        <div>
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo" style="display: block !important; width: 60% !important;margin-left: auto !important;margin-right: auto !important;" />
+        </div>
+
+        <div>
+
+           <form method="POST" action="/login" style="width: 100%;">
+              {{ form.csrf_token }}
+            <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
+
+            <div class="form-outline mb-4">
+              {{ form.email(class_='form-control form-control-lg') }}
+              <label>{{ form.email.label(class_='form-label') }}</label>
+            </div>
+
+            <div class="form-outline mb-4">
+
+                {{ form.password(class_='form-control form-control-lg') }}
+              <label>{{ form.password.label(class_='form-label') }}</label>
+              {% if form.email.errors %}
+              <ul class="errors">
+                {% for error in form.password.errors %}
+                  <li>{{ error }}</li>{% endfor %}
+              </ul>
+            {% endif %}
+
+            </div>
+
+            <div class="pt-1 mb-4">
+            {{ form.submit(class_='btn btn-primary btn-lg btn-block') }}
+            </div>
+
+            {% for message in get_flashed_messages() %}
+              <div class="alert alert-warning">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ message }}
+              </div>
+            {% endfor %}
+          </form>
+
+        </div>
+
+      </div>
+        </div>
+    </div>
+</div>
+    </div>
+  </div>
+</section>
+{% endblock %}

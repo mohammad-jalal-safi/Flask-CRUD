@@ -1,0 +1,43 @@
+{% extends "layout.jinja2" %}
+
+{% block content %}
+    <div class="card">
+    <div class="card-body">
+        <div>
+        <b>Signup Users</b>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form method="POST" action="/signup">
+                    {{ form.csrf_token }}
+                    <div class="form-outline col-md-6">
+                      {{ form.name(class_='form-control form-control-lg') }}
+                      <label>{{ form.name.label(class_='form-label') }}</label>
+                    </div>
+                    <div class="form-outline col-md-6">
+                      {{ form.email(class_='form-control form-control-lg') }}
+                      <label>{{ form.email.label(class_='form-label') }}</label>
+                    </div>
+                    <div class="form-outline col-md-6">
+                      {{ form.password(class_='form-control form-control-lg') }}
+                      <label>{{ form.password.label(class_='form-label') }}</label>
+                    </div>
+                    <div class="form-outline col-md-6">
+                      {{ form.confirm(class_='form-control form-control-lg') }}
+                      <label>{{ form.confirm.label(class_='form-label') }}</label>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <hr>
+                            {{ form.submit(class_='btn btn-primary float-end') }}
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+{% endblock %}
